@@ -2178,7 +2178,9 @@
           color: #627782;
           display: flex;
           flex-direction: column;
-          sm: flex-row;
+          @media (min-width: 576px) {
+            flex-direction: row;
+          }
           justify-content: space-between;
           gap: 1rem;
         "
