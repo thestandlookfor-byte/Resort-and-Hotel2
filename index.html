@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Sanctuary Resort & Hotel · Single File Bundle</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Kantumruy+Pro:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ========================================================
+   THE SANCTUARY RESORT & HOTEL - CSS GRID STYLESHEET
+   Pure CSS3 with 12-Column Grid Architecture
+   ======================================================== */
+
+      :root {
+        --bg-primary: #0a0f12;
+        --bg-card: #10181c;
+        --bg-surface: #141f24;
+        --accent-gold: #c5a880;
+        --accent-gold-light: #e0cca9;
+        --accent-gold-dark: #8d714b;
+        --text-main: #e3e7ea;
+        --text-muted: #9cb1bc;
+        --border-subtle: #21353f;
+        --border-strong: #2c4450;
+        --font-serif: "Cormorant Garamond", Georgia, serif;
+        --font-khmer: "Kantumruy Pro", sans-serif;
+        --font-sans: "Plus Jakarta Sans", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-main);
+        font-family: var(--font-khmer), var(--font-sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* ========================================================
+   1. TOP BAR & NAVIGATION (CSS GRID & FLEXBOX)
+   ======================================================== */
+      .top-bar {
+        background-color: #121c20;
+        border-bottom: 1px solid var(--border-subtle);
+        font-size: 0.75rem;
+        padding: 0.5rem 0;
+      }
+
+      .top-bar-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .top-bar-grid {
+          grid-template-columns: repeat(3, 1fr);
+          text-align: left;
+        }
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background-color: rgba(10, 15, 18, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-subtle);
+        height: 80px;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .nav-links {
+        display: none;
+        gap: 2rem;
+        font-size: 0.875rem;
+      }
+
+      @media (min-width: 1024px) {
+        .nav-links {
+          display: flex;
+        }
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--accent-gold),
+          var(--accent-gold-dark)
+        );
+        color: #0a0f12;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.65rem 1.5rem;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.15);
+        box-shadow: 0 4px 15px rgba(197, 168, 128, 0.25);
+      }
+
+      /* ========================================================
+   2. HERO 12-COLUMN CSS GRID
+   ======================================================== */
+      .resort-hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 2rem 0;
+      }
+
+      @media (min-width: 1024px) {
+        .resort-hero-grid {
+          grid-template-columns: repeat(12, 1fr);
+          grid-auto-rows: minmax(180px, auto);
+        }
+
+        .hero-main {
+          grid-column: span 8;
+          grid-row: span 2;
+        }
+
+        .hero-accolade {
+          grid-column: span 4;
+        }
+
+        .hero-weather {
+          grid-column: span 4;
+        }
+      }
+
+      .hero-main {
+        position: relative;
+        min-height: 480px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border-subtle);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 2.5rem;
+      }
+
+      .hero-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        transition: transform 0.8s ease;
+      }
+
+      .hero-main:hover .hero-img {
+        transform: scale(1.04);
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          #090e10 0%,
+          rgba(9, 14, 16, 0.65) 60%,
+          transparent 100%
+        );
+        z-index: 2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        max-width: 640px;
+      }
+
+      .hero-title {
+        font-family: var(--font-serif);
+        font-size: 2.75rem;
+        font-weight: 700;
+        line-height: 1.15;
+        color: #ffffff;
+        margin: 1rem 0;
+      }
+
+      .card-luxury {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* ========================================================
+   3. BOOKING ENGINE (12-COLUMN RESPONSIVE GRID)
+   ======================================================== */
+      .booking-bar {
+        background-color: #11191d;
+        border: 1px solid var(--border-strong);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: -1rem auto 4rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-items: end;
+      }
+
+      @media (min-width: 768px) {
+        .booking-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .booking-grid {
+          grid-template-columns: 3fr 3fr 2fr 2fr 2fr;
+        }
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.4rem;
+        letter-spacing: 0.05em;
+      }
+
+      .form-input {
+        width: 100%;
+        background-color: #18242a;
+        border: 1px solid #2b3e48;
+        color: #ffffff;
+        padding: 0.65rem 0.85rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .form-input:focus {
+        border-color: var(--accent-gold);
+      }
+
+      /* ========================================================
+   4. BENTO GRID (EXPERIENCES SECTION)
+   ======================================================== */
+      .bento-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-top: 2.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .bento-grid {
+          grid-template-columns: repeat(12, 1fr);
+        }
+
+        .bento-span-7 {
+          grid-column: span 7;
+        }
+
+        .bento-span-5 {
+          grid-column: span 5;
+        }
+
+        .bento-span-4 {
+          grid-column: span 4;
+        }
+      }
+
+      .bento-card {
+        position: relative;
+        min-height: 320px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border-subtle);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.75rem;
+      }
+
+      .bento-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .bento-card:hover .bento-img {
+        transform: scale(1.05);
+      }
+
+      .bento-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          #090f11 0%,
+          rgba(9, 15, 17, 0.6) 60%,
+          transparent 100%
+        );
+      }
+
+      .bento-text {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ========================================================
+   5. VILLAS & SUITES MOSAIC GRID
+   ======================================================== */
+      .mosaic-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      @media (min-width: 1024px) {
+        .mosaic-grid {
+          grid-template-columns: repeat(12, 1fr);
+        }
+
+        .mosaic-span-8 {
+          grid-column: span 8;
+        }
+
+        .mosaic-span-4 {
+          grid-column: span 4;
+        }
+      }
+
+      .villa-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .villa-card:hover {
+        border-color: var(--border-strong);
+        transform: translateY(-4px);
+      }
+
+      .villa-thumb {
+        position: relative;
+        height: 280px;
+        overflow: hidden;
+      }
+
+      .villa-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .villa-body {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      /* ========================================================
+   6. 3-COLUMN CULINARY & REVIEWS GRID
+   ======================================================== */
+      .grid-3-col {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .grid-3-col {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* ========================================================
+   7. 12-COLUMN FOOTER GRID
+   ======================================================== */
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #18262d;
+      }
+
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: 4fr 2fr 2fr 4fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+      <div class="container top-bar-grid">
+        <div>✦ កោះរ៉ុងសន្លឹម, ព្រះរាជាណាចក្រកម្ពុជា</div>
+        <div style="color: #c5a880; text-align: center">
+          ការបញ្ចុះតម្លៃពិសេស ២៥% សម្រាប់ការកក់មុន ៣០ ថ្ងៃ
+        </div>
+        <div style="text-align: right">ទូរស័ព្ទ: +855 (0) 34 938 888</div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="navbar">
+      <div class="container navbar-container">
+        <a href="#" style="display: flex; align-items: center; gap: 0.75rem">
+          <div
+            style="
+              width: 40px;
+              height: 40px;
+              background: #c5a880;
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #0a0f12;
+              font-weight: bold;
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: 1.5rem;
+            "
+          >
+            S
+          </div>
+          <div>
+            <span
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+                letter-spacing: 0.15em;
+                color: #fff;
+                display: block;
+              "
+              >THE SANCTUARY</span
+            >
+            <span
+              style="
+                font-size: 0.7rem;
+                color: #c5a880;
+                letter-spacing: 0.1em;
+                display: block;
+              "
+              >RESORT & HOTEL · 5 STAR</span
+            >
+          </div>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#hero">ទំព័រដើម</a>
+          <a href="#villas">បន្ទប់ & វីឡា</a>
+          <a href="#experiences">បទពិសោធន៍</a>
+          <a href="#dining">ភោជនីយដ្ឋាន</a>
+          <a href="#contact">ទំនាក់ទំនង</a>
+        </nav>
+
+        <a href="#booking" class="btn-primary">កក់បន្ទប់ឥឡូវនេះ</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="container" style="padding-top: 2rem">
+      <div class="resort-hero-grid">
+        <div class="hero-main">
+          <img
+            class="hero-img"
+            src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1600&q=85"
+            alt="Resort Horizon"
+          />
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span
+              style="
+                font-size: 0.75rem;
+                color: #c5a880;
+                border: 1px solid #c5a880;
+                padding: 0.25rem 0.75rem;
+                border-radius: 50px;
+                background: rgba(0, 0, 0, 0.6);
+              "
+              >✦ ជម្រកឋានសួគ៌ឯកជនលើកោះធម្មជាតិ</span
+            >
+            <h1 class="hero-title">
+              រីករាយជាមួយបទពិសោធន៍វិស្សមកាលលំដាប់ផ្កាយប្រាំ
+            </h1>
+            <p
+              style="color: #cbd8df; font-size: 0.95rem; margin-bottom: 1.5rem"
+            >
+              សម្រាកកាយលើវីឡាលើផ្ទៃសមុទ្រខៀវស្រងាត់ ឆ្នេរខ្សាច់សក្បុះ
+              និងម្ហូបអាហារលំដាប់ពិភពលោក នៅកោះរ៉ុងសន្លឹម។
+            </p>
+            <div style="display: flex; gap: 1rem">
+              <a href="#villas" class="btn-primary">ស្វែងរកវីឡាប្រណិត</a>
+              <a
+                href="#experiences"
+                class="btn-primary"
+                style="
+                  background: rgba(18, 29, 34, 0.8);
+                  color: #fff;
+                  border: 1px solid #2e4450;
+                "
+                >មើលបទពិសោធន៍</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="card-luxury hero-accolade">
+          <div>
+            <span
+              style="
+                font-size: 0.75rem;
+                color: #c5a880;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+              "
+              >ពានរង្វាន់អន្តរជាតិ</span
+            >
+            <h2
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.35rem;
+                color: #fff;
+                margin: 0.5rem 0;
+              "
+            >
+              Condé Nast Traveler 2026 Gold List
+            </h2>
+            <p style="font-size: 0.8rem; color: #9bb0bb">
+              ជាប់ចំណាត់ថ្នាក់ជា «រីសតលើកោះល្អដាច់គេបំផុតនៅអាស៊ីអាគ្នេយ៍»
+              និងពានរង្វាន់សេវាកម្មល្អឥតខ្ចោះ ៥ ឆ្នាំជាប់ៗគ្នា។
+            </p>
+          </div>
+          <div
+            style="
+              border-top: 1px solid #1d2d34;
+              padding-top: 1rem;
+              display: flex;
+              justify-content: space-between;
+            "
+          >
+            <div>
+              <strong style="font-size: 1.5rem; color: #fff; display: block"
+                >4.98 / 5</strong
+              >
+              <span style="font-size: 0.7rem; color: #8aa1ac"
+                >ការវាយតម្លៃពីភ្ញៀវ 2,400+</span
+              >
+            </div>
+            <div>
+              <strong style="font-size: 1.5rem; color: #c5a880; display: block"
+                >100%</strong
+              >
+              <span style="font-size: 0.7rem; color: #8aa1ac"
+                >ថាមពលបៃតងស្អាត Solar</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="card-luxury hero-weather">
+          <div>
+            <span style="font-size: 0.75rem; color: #8aa1ac"
+              >អាកាសធាតុកោះថ្ងៃនេះ</span
+            >
+            <div
+              style="
+                font-size: 2rem;
+                font-weight: bold;
+                color: #fff;
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+              "
+            >
+              28°C
+              <span style="font-size: 0.8rem; color: #34d399"
+                >(ខ្យល់ជំនោរសមុទ្រ)</span
+              >
+            </div>
+          </div>
+          <div
+            style="
+              font-size: 0.8rem;
+              color: #9bb0bb;
+              border-top: 1px solid #1b2a30;
+              padding-top: 0.75rem;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.35rem;
+              "
+            >
+              <span>សីតុណ្ហភាពទឹកសមុទ្រ:</span>
+              <strong style="color: #fff">27°C (ကြည်ថ្លា)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <span>ពេលថ្ងៃលិច:</span>
+              <strong style="color: #fff">18:14 PM</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Bar -->
+    <section id="booking" class="container">
+      <div class="booking-bar">
+        <form
+          class="booking-grid"
+          onsubmit="
+            event.preventDefault();
+            alert('សូមអរគុណ! ការកក់របស់អ្នកត្រូវបានកត់ត្រាទុក។');
+          "
+        >
+          <div class="form-group">
+            <label>ថ្ងៃចូលស្នាក់នៅ (Check-In)</label>
+            <input type="date" value="2026-10-15" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label>ថ្ងៃចាកចេញ (Check-Out)</label>
+            <input type="date" value="2026-10-20" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label>ចំនួនភ្ញៀវ</label>
+            <select class="form-input">
+              <option>1 ភ្ញៀវ</option>
+              <option selected>2 ភ្ញៀវ (Couple)</option>
+              <option>4 ភ្ញៀវ (Family)</option>
+              <option>6+ ភ្ញៀវ (VIP)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ប្រភេទវីឡា</label>
+            <select class="form-input">
+              <option>គ្រប់ប្រភេទវីឡា</option>
+              <option>វីឡាលើទឹកសមុទ្រ</option>
+              <option>វីឡាលើឆ្នេរខ្សាច់</option>
+              <option>ស្វីតប្រធានាធិបតី</option>
+            </select>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="btn-primary"
+              style="width: 100%; justify-content: center"
+            >
+              ពិនិត្យបន្ទប់ទំនេរ
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Bento Section -->
+    <section id="experiences" class="container" style="padding: 3rem 1.5rem">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem">
+        <span
+          style="
+            color: #c5a880;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+          "
+          >✦ THE SANCTUARY EXPERIENCES ✦</span
+        >
+        <h2
+          style="
+            font-family: &quot;Cormorant Garamond&quot;, serif;
+            font-size: 2.25rem;
+            color: #fff;
+            margin-top: 0.5rem;
+          "
+        >
+          បទពិសោធន៍វិស្សមកាលដែលគ្មានពីរ
+        </h2>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card bento-span-7">
+          <img
+            class="bento-img"
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
+            alt="Infinity Pool"
+          />
+          <div class="bento-gradient"></div>
+          <div class="bento-text">
+            <span
+              style="
+                font-size: 0.75rem;
+                color: #c5a880;
+                background: rgba(0, 0, 0, 0.7);
+                padding: 0.2rem 0.6rem;
+                border-radius: 4px;
+              "
+              >អាងទឹកមហាសមុទ្រ</span
+            >
+            <h3
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.5rem;
+                color: #fff;
+                margin: 0.5rem 0;
+              "
+            >
+              អាងហែលទឹក Infinity ជាប់ផ្ទៃសមុទ្រគ្មានព្រំដែន
+            </h3>
+            <p style="font-size: 0.85rem; color: #cbd8df">
+              សម្រាកស្រូបយកពន្លឺព្រះអាទិត្យជាមួយអាងទឹកដែលមើលទៅរលាយចូលទៅក្នុងផ្ទៃមហាសមុទ្រខៀវស្រងាត់។
+            </p>
+          </div>
+        </div>
+
+        <div class="bento-card bento-span-5">
+          <img
+            class="bento-img"
+            src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1000&q=80"
+            alt="Spa Wellness"
+          />
+          <div class="bento-gradient"></div>
+          <div class="bento-text">
+            <span
+              style="
+                font-size: 0.75rem;
+                color: #c5a880;
+                background: rgba(0, 0, 0, 0.7);
+                padding: 0.2rem 0.6rem;
+                border-radius: 4px;
+              "
+              >សុខភាព & ស្ប៉ា</span
+            >
+            <h3
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.5rem;
+                color: #fff;
+                margin: 0.5rem 0;
+              "
+            >
+              ស្ប៉ារុក្ខឱសថបុរាណខ្មែរ
+            </h3>
+            <p style="font-size: 0.85rem; color: #cbd8df">
+              ការម៉ាស្សា និងស្ប៉ាដោយប្រើប្រេងក្រអូបរុក្ខជាតិធម្មជាតិដាំលើកោះ
+              ដើម្បីផ្តល់ថាមពលស្រស់ថ្លាឡើងវិញ។
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Villas -->
+    <section
+      id="villas"
+      class="container"
+      style="padding: 3rem 1.5rem; border-top: 1px solid var(--border-subtle)"
+    >
+      <div style="margin-bottom: 2rem">
+        <span
+          style="
+            color: #c5a880;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+          "
+          >✦ LUXURY ACCOMMODATIONS ✦</span
+        >
+        <h2
+          style="
+            font-family: &quot;Cormorant Garamond&quot;, serif;
+            font-size: 2.25rem;
+            color: #fff;
+            margin-top: 0.5rem;
+          "
+        >
+          បន្ទប់ស្នាក់នៅ និងវីឡាប្រណិត
+        </h2>
+      </div>
+
+      <div class="mosaic-grid">
+        <div class="villa-card mosaic-span-8">
+          <div class="villa-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80"
+              alt="Royal Overwater Villa"
+            />
+          </div>
+          <div class="villa-body">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+              "
+            >
+              <h3
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.5rem;
+                  color: #fff;
+                "
+              >
+                រ៉ូយ៉ាល់ ហូរីហ្សុន អូវ័រវ៉ត់ទ័រ វីឡា (Royal Horizon)
+              </h3>
+              <span
+                style="font-size: 1.35rem; color: #c5a880; font-weight: bold"
+                >$850
+                <small style="font-size: 0.75rem; color: #8aa1ac"
+                  >/ យប់</small
+                ></span
+              >
+            </div>
+            <p style="font-size: 0.85rem; color: #9bb0bb; margin: 0.75rem 0">
+              ទំហំ 220 m² · ២ បន្ទប់គេង · អាងហែលទឹកឯកជនលើផ្ទៃសមុទ្រ ·
+              សេវាអ្នកបម្រើផ្ទាល់ខ្លួន
+            </p>
+            <button class="btn-primary" style="margin-top: 1rem">
+              ជ្រើសរើសវីឡានេះ
+            </button>
+          </div>
+        </div>
+
+        <div class="villa-card mosaic-span-4">
+          <div class="villa-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=80"
+              alt="Beachfront Villa"
+            />
+          </div>
+          <div class="villa-body">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+              "
+            >
+              <h3
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.35rem;
+                  color: #fff;
+                "
+              >
+                ផាម ប៊ិចហ្វ្រុន វីឡា
+              </h3>
+              <span
+                style="font-size: 1.25rem; color: #c5a880; font-weight: bold"
+                >$520
+                <small style="font-size: 0.75rem; color: #8aa1ac"
+                  >/ យប់</small
+                ></span
+              >
+            </div>
+            <p style="font-size: 0.85rem; color: #9bb0bb; margin: 0.75rem 0">
+              ទំហំ 160 m² · ១ បន្ទប់គេង · ជាប់ឆ្នេរខ្សាច់កោះរ៉ុង ៥ ម៉ែត្រ
+            </p>
+            <button class="btn-primary" style="margin-top: 1rem">
+              ជ្រើសរើសវីឡានេះ
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      id="contact"
+      style="
+        background-color: #080d0f;
+        border-top: 1px solid var(--border-subtle);
+        padding: 4rem 0 2rem;
+      "
+    >
+      <div class="container footer-grid">
+        <div>
+          <h4
+            style="
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: 1.25rem;
+              color: #fff;
+              margin-bottom: 0.5rem;
+            "
+          >
+            THE SANCTUARY
+          </h4>
+          <p style="font-size: 0.8rem; color: #9bb0bb; line-height: 1.7">
+            រីសត និងសណ្ឋាគារលំដាប់ផ្កាយប្រាំលើកោះធម្មជាតិ ផ្តល់នូវភាពស្ងប់ស្ងាត់
+            វីឡាលើផ្ទៃសមុទ្រ និងសេវាកម្មកម្រិតខ្ពស់បំផុត។
+          </p>
+        </div>
+        <div>
+          <h5 style="color: #fff; font-size: 0.85rem; margin-bottom: 0.75rem">
+            ទីតាំង
+          </h5>
+          <p style="font-size: 0.8rem; color: #9bb0bb">
+            ឆ្នេរសារ៉ាសេនបេ, កោះរ៉ុងសន្លឹម, ខេត្តព្រះសីហនុ, ប្រទេសកម្ពុជា
+          </p>
+        </div>
+      </div>
+      <div
+        class="container"
+        style="
+          text-align: center;
+          padding-top: 2rem;
+          font-size: 0.75rem;
+          color: #627782;
+        "
+      >
+        © 2026 The Sanctuary Resort & Hotel. Single-File All-in-One Bundle.
+      </div>
+    </footer>
+  </body>
+</html>
